@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mahii ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffafbd, #ffc3a0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      background: url('mahii_photo.jpg') center/cover no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.2;
+      z-index: 0;
+      filter: blur(2px);
+    }
+    .card {
+      background: rgba(255,255,255,0.95);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 380px;
+      z-index: 2;
+      position: relative;
+    }
+    h1 { color: #ff4d6d; font-size: 32px; animation: floatIn 2s ease forwards; opacity: 0; }
+    h2 { margin-top: 20px; color: #ff4d6d; }
+    p { color: #555; font-size: 16px; line-height: 1.5; margin-top: 15px; }
+    button {
+      margin: 15px; padding: 12px 25px; font-size: 16px;
+      border: none; border-radius: 25px; cursor: pointer; transition: 0.3s;
+    }
+    #yes { background: #ff4d6d; color: white; }
+    #no { background: #ddd; position: absolute; }
+    .heart { position: absolute; font-size: 20px; color: rgba(255, 0, 50, 0.9); }
+    @keyframes floatIn { 0% { transform: translateY(-50px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+    audio { display: none; }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="chanda_chamke.mp3" type="audio/mpeg">
+  </audio>
+  <div id="hearts-container"></div>
+  <div class="card" id="card">
+    <h1>Mahii 🌙❤️</h1>
+    <p>
+      My baby,<br><br>
+      You are not just someone I love — you are someone who feels like home to me.<br>
+      When life gets heavy, it’s your smile that makes it lighter.<br>
+      I don’t always say it perfectly, but you mean more to me than you know.<br><br>
+      I love your kindness, warmth, and beautiful soul. You are amazing inside and out.
+    </p>
+    <h2>Will you be my Valentine? 💌</h2>
+    <button id="yes" onclick="yesClicked()">YES 💖</button>
+    <button id="no" onmouseover="moveNo()">NO 🙃</button>
+  </div>
+  <script>
+    const container = document.getElementById('hearts-container');
+    const text = "Mahii ❤️";
+    const startX = window.innerWidth/2 - 100;
+    const startY = window.innerHeight/3;
+    for(let i=0;i<text.length;i++){
+      const heart=document.createElement('div');heart.className='heart';heart.innerText=text[i];heart.style.left=startX+i*25+'px';heart.style.top=startY+'px';container.appendChild(heart);}
+    setTimeout(()=>{document.querySelectorAll('.heart').forEach(h=>{h.style.transition="2s ease";h.style.left=Math.random()*window.innerWidth+"px";h.style.top=Math.random()*window.innerHeight+"px";h.style.fontSize=(10+Math.random()*30)+"px";h.style.opacity=0.8;});},3000);
+    function yesClicked(){document.body.innerHTML=`<div style="text-align:center; color:white; padding:40px;"><h1>YAYYY 🥹❤️</h1><h2>Thank you, my baby 💕</h2><p>Every moment with you means everything to me.<br>I promise to keep choosing you, every day 🌙✨</p></div>`;}
+    function moveNo(){const no=document.getElementById("no");const x=Math.random()*(window.innerWidth-100);const y=Math.random()*(window.innerHeight-50);no.style.left=x+"px";no.style.top=y+"px";}
+    for(let i=0;i<30;i++){let heart=document.createElement("div");heart.className="heart";heart.innerHTML="❤️";heart.style.left=Math.random()*100+"vw";heart.style.top=Math.random()*window.innerHeight+"px";heart.style.fontSize=(10+Math.random()*20)+"px";heart.style.transition="2s ease";setInterval(()=>{heart.style.left=Math.random()*window.innerWidth+"px";heart.style.top=Math.random()*window.innerHeight+"px";},3000);document.body.appendChild(heart);}
+  </script>
+</body>
+</html>
